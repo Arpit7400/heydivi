@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0d0512" />
+  <title>For Divya ✨</title>
+
+  <!-- Google Fonts: romantic serif + script + geometric sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Great+Vibes&family=Jost:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- ============ AMBIENT BACKGROUND LAYERS ============ -->
+  <div class="ambient" aria-hidden="true">
+    <div class="ambient__base"></div>
+    <div class="aurora">
+      <span class="blob blob--rose"></span>
+      <span class="blob blob--gold"></span>
+      <span class="blob blob--violet"></span>
+    </div>
+    <div class="bokeh" id="bokeh"></div>
+    <div class="grain"></div>
+  </div>
+
+  <!-- ============ MUSIC TOGGLE ============ -->
+  <button id="muteToggle" class="mute-toggle" aria-label="Toggle music" hidden>
+    <span class="mute-toggle__on" aria-hidden="true">♪</span>
+    <span class="mute-toggle__off" aria-hidden="true">✕</span>
+  </button>
+  <audio id="song" loop preload="auto"></audio>
+
+  <!-- ============ PROGRESS DOTS ============ -->
+  <nav class="progress" id="progress" aria-label="Journey progress" hidden></nav>
+
+  <!-- ============ SCENES ============ -->
+  <main id="stage" class="stage">
+
+    <!-- Scene 0 — The Arrival -->
+    <section class="scene scene--gate is-active" id="scene-gate" data-scene="0" aria-label="Welcome">
+      <div class="gate">
+        <div class="candle" aria-hidden="true">
+          <div class="candle__flame"><span class="candle__glow"></span></div>
+          <div class="candle__stick"></div>
+        </div>
+        <p class="gate__pre reveal-up">A little something was made for you…</p>
+        <h1 class="gate__name script shimmer reveal-up" id="gateName">Divya</h1>
+        <button class="btn btn--primary gate__begin reveal-up" id="beginBtn">Begin ✨</button>
+      </div>
+    </section>
+
+    <!-- Scene 1 — Countdown -->
+    <section class="scene scene--countdown" id="scene-countdown" data-scene="1" aria-label="Countdown" hidden>
+      <div class="scene__inner">
+        <p class="eyebrow">My world is about to get its favourite day</p>
+        <div class="countdown" id="countdown">
+          <div class="glass count-card"><span class="count-card__num" id="cd-days">00</span><span class="count-card__label">days</span></div>
+          <div class="glass count-card"><span class="count-card__num" id="cd-hours">00</span><span class="count-card__label">hours</span></div>
+          <div class="glass count-card"><span class="count-card__num" id="cd-mins">00</span><span class="count-card__label">min</span></div>
+          <div class="glass count-card"><span class="count-card__num" id="cd-secs">00</span><span class="count-card__label">sec</span></div>
+        </div>
+        <button class="btn btn--ghost scene__next" data-next>skip ahead →</button>
+      </div>
+    </section>
+
+    <!-- Scene 2 — Happy Birthday Hero -->
+    <section class="scene scene--hero" id="scene-hero" data-scene="2" aria-label="Happy Birthday" hidden>
+      <div class="balloons" id="balloons" aria-hidden="true"></div>
+      <div class="scene__inner hero">
+        <h2 class="hero__title serif" id="heroTitle" data-text="Happy Birthday" aria-label="Happy Birthday"></h2>
+        <h1 class="hero__name script" id="heroName" data-text="Divya" aria-label="Divya"></h1>
+        <p class="hero__sub reveal-up" id="heroSub"></p>
+        <button class="btn btn--primary scene__next reveal-up" data-next>continue ✨</button>
+      </div>
+    </section>
+
+    <!-- Scene 3 — The Cake -->
+    <section class="scene scene--cake" id="scene-cake" data-scene="3" aria-label="Birthday cake" hidden>
+      <div class="scene__inner">
+        <h2 class="scene__title serif">Make a wish</h2>
+        <p class="eyebrow" id="cakeHint">tap each flame to blow it out</p>
+        <div class="cake-wrap">
+          <div class="cake" id="cake" role="group" aria-label="Birthday cake with candles">
+            <div class="cake__candles" id="candles"></div>
+            <div class="cake__top"></div>
+            <div class="cake__drip"></div>
+            <div class="cake__mid"></div>
+            <div class="cake__base"></div>
+            <div class="cake__plate"></div>
+          </div>
+        </div>
+        <button class="btn btn--ghost" id="micBtn">🎤 blow for real</button>
+        <button class="btn btn--primary scene__next" data-next hidden id="cakeNext">continue ✨</button>
+      </div>
+    </section>
+
+    <!-- Scene 4 — Our Story -->
+    <section class="scene scene--story" id="scene-story" data-scene="4" aria-label="Our story" hidden>
+      <div class="scene__inner scene__inner--wide">
+        <h2 class="scene__title serif">Our Story</h2>
+        <p class="eyebrow">every frame, a favourite</p>
+        <div class="timeline" id="timeline"></div>
+        <button class="btn btn--primary scene__next" data-next>continue ✨</button>
+      </div>
+    </section>
+
+    <!-- Scene 5 — Reasons -->
+    <section class="scene scene--reasons" id="scene-reasons" data-scene="5" aria-label="Reasons I love you" hidden>
+      <div class="scene__inner">
+        <h2 class="scene__title serif">Reasons I Love You</h2>
+        <div class="reason-deck" id="reasonDeck"></div>
+        <button class="btn btn--primary" id="reasonMore">one more ❤</button>
+        <button class="btn btn--primary scene__next" data-next hidden id="reasonNext">continue ✨</button>
+      </div>
+    </section>
+
+    <!-- Scene 6 — The Letter -->
+    <section class="scene scene--letter" id="scene-letter" data-scene="6" aria-label="A letter for you" hidden>
+      <div class="scene__inner">
+        <div class="letter glass-paper">
+          <div class="letter__body" id="letterBody" aria-live="polite"></div>
+          <p class="letter__sign script">— sirf tumhara, <span id="letterSign">Arpit</span>
+            <span class="heart-seal" aria-hidden="true">❤</span>
+          </p>
+        </div>
+        <button class="btn btn--ghost" id="letterSkip">skip ↦</button>
+        <button class="btn btn--primary scene__next" data-next hidden id="letterNext">continue ✨</button>
+      </div>
+    </section>
+
+    <!-- Scene 7 — Wishes Lantern Night -->
+    <section class="scene scene--lanterns" id="scene-lanterns" data-scene="7" aria-label="Wishes" hidden>
+      <div class="night" aria-hidden="true">
+        <div class="moon"></div>
+        <div class="stars" id="stars"></div>
+      </div>
+      <div class="lantern-layer" id="lanternLayer" aria-hidden="true"></div>
+      <div class="scene__inner scene__inner--lanterns">
+        <h2 class="scene__title serif">Wishes for you</h2>
+        <p class="eyebrow" id="lanternHint">tap the sky to release a wish</p>
+        <button class="btn btn--primary scene__next" data-next hidden id="lanternNext">continue ✨</button>
+      </div>
+    </section>
+
+    <!-- Scene 8 — Grand Finale -->
+    <section class="scene scene--finale" id="scene-finale" data-scene="8" aria-label="Finale" hidden>
+      <canvas class="fireworks" id="fireworks"></canvas>
+      <div class="scene__inner finale">
+        <h1 class="finale__title serif shimmer" id="finaleTitle">Happy Birthday Divya</h1>
+        <p class="finale__line" id="finaleLine"></p>
+        <button class="btn btn--primary btn--big" id="hugBtn">Ab ek hug pending hai 🤗</button>
+        <button class="btn btn--ghost" id="replayBtn">replay from the top ↺</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Confetti / particle canvas overlay (shared) -->
+  <canvas class="fx-canvas" id="fxCanvas" aria-hidden="true"></canvas>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
